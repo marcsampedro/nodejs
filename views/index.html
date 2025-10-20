@@ -1,29 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css">
-    <title>Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>Dashboard</title>
 </head>
 <body>
-    <header>
-        <h1>Dashboard</h1>
-        <nav>
-            <a href="dashboard.html">Dashboard</a>
-            <a href="control_mensual.html">Control Mensual</a>
-            <a href="evolucion_finanzas.html">Evolución finanzas</a>
-            <a href="prepagado.html">Prepagado</a>
-        </nav>
-    </header>
-    <main>
-        <h2>Resumen Financiero</h2>
-        <div id="resumen">
-            <p>Total Forecast: <span id="total-forecast">1.397.823,16 €</span></p>
-            <p>Total Facturado: <span id="total-facturado">1.397.828,34 €</span></p>
-            <p>WIP (Forecast - Facturado): <span id="wip">-5,18 €</span></p>
-            <p>Pendiente (incurrir + fra.): <span id="pendiente">76.874,79 €</span></p>
-        </div>
-    </main>
+  <header class="topbar">
+    <div class="logo">NTT DATA<br>Control Económico</div>
+    <nav class="nav-pills" aria-label="Navegación principal">
+      <a href="index.html" class="pill active">Dashboard</a>
+      <a href="control_mensual.html" class="pill">Control Mensual</a>
+      <a href="evolucion_finanzas.html" class="pill">Evolución finanzas</a>
+      <a href="prepagado.html" class="pill">Prepagado</a>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="section-title">
+      <h2>Resumen Financiero</h2>
+    </section>
+
+    <section class="cards-grid" aria-label="Resumen de métricas">
+      <article class="card metric-card">
+        <div class="metric-label">Total Forecast</div>
+        <div class="metric-value" id="total-forecast">1.397.823,16 €</div>
+      </article>
+      <article class="card metric-card">
+        <div class="metric-label">Total Facturado</div>
+        <div class="metric-value" id="total-facturado">1.397.828,34 €</div>
+      </article>
+      <article class="card metric-card">
+        <div class="metric-label">WIP (Forecast - Facturado)</div>
+        <div class="metric-value negative" id="wip">-5,18 €</div>
+      </article>
+      <article class="card metric-card">
+        <div class="metric-label">Pendiente (incurrir + fra.)</div>
+        <div class="metric-value" id="pendiente">76.874,79 €</div>
+      </article>
+    </section>
+
+    <section class="filters-bar card" aria-label="Filtrar por fechas">
+      <div class="filters-grid">
+        <label>Desde
+          <input type="month" value="2025-04" />
+        </label>
+        <label>Hasta
+          <input type="month" value="" />
+        </label>
+        <button class="btn-filter" type="button">Filtrar</button>
+        <button class="btn-reset" type="button">Reset</button>
+      </div>
+    </section>
+
+    <section class="charts-grid">
+      <section class="card chart-card" aria-label="Serie Mensual">
+        <h3>Serie Mensual</h3>
+        <canvas id="chart-series" width="800" height="300"></canvas>
+      </section>
+      <section class="card chart-card" aria-label="Evolución de la bolsa mensual">
+        <h3>Evolución de la bolsa mensual</h3>
+        <canvas id="chart-bolsa" width="800" height="300"></canvas>
+      </section>
+    </section>
+  </main>
+  <!-- Inicialización de gráficos puede añadirse cuando se cuente con datos reales -->
+  <script src="/js/Chart.min.js"></script>
+  <script>
+    // Espacio para lógica de gráficos si se integra Chart.js u otra librería en el futuro.
+  </script>
 </body>
 </html>
