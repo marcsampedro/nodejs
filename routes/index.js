@@ -7,4 +7,17 @@ router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../views/index.html'));
 });
 
+ // Routes for static pages
+router.get('/index.html', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/index.html'));
+});
+router.get('/control_mensual.html', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/control_mensual.html'));
+});
+router.get('/evolucion_finanzas.html', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/evolucion_finanzas.html'));
+});
+router.get('/prepagado.html', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/prepagado.html'));
+});
 module.exports = router;

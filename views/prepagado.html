@@ -7,35 +7,41 @@
     <title>Prepagado</title>
 </head>
 <body>
-    <header>
-        <h1>Control del Prepagado</h1>
-        <nav>
-            <a href="index.html">Dashboard</a>
-            <a href="control_mensual.html">Control Mensual</a>
-            <a href="evolucion_finanzas.html">Evolución finanzas</a>
-            <a href="prepagado.html">Prepagado</a>
-    </nav>
+    <header class="topbar">
+  <div class="logo">NTT DATA<br>Control Económico</div>
+  <nav class="nav-pills" aria-label="Navegación principal">
+    <a href="index.html" class="pill">Dashboard</a>
+    <a href="control_mensual.html" class="pill">Control Mensual</a>
+    <a href="evolucion_finanzas.html" class="pill">Evolución finanzas</a>
+    <a href="prepagado.html" class="pill active">Prepagado</a>
+  </nav>
   <button id="btn-generate-pdf" class="btn-pdf" title="Generar informe PDF" style="margin-left:8px;">Generar Informe PDF</button>
 </header>
-    <main>
-        <h2>Total General del Prepagado</h2>
-        <p id="total-prepagado">11.236,81 €</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Bolsa</th>
-                    <th>Mes</th>
-                    <th>Concepto</th>
-                    <th>Tipo</th>
-                    <th>Importe (€)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Filas de datos se insertarán aquí -->
-            </tbody>
-        </table>
-        <button>Añadir</button>
-    </main>
+<main class="container">
+  <div class="prep-grid">
+    <section class="card" style="padding:12px;">
+      <h2>Total General del Prepagado</h2>
+      <p id="total-prepagado">11.236,81 €</p>
+    </section>
+    <section class="card" style="padding:12px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Bolsa</th>
+            <th>Mes</th>
+            <th>Concepto</th>
+            <th>Tipo</th>
+            <th>Importe (€)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filas de datos se insertarán aquí -->
+        </tbody>
+      </table>
+    </section>
+  </div>
+  <button>Añadir</button>
+</main>
 </body>
 <script>
   document.getElementById('btn-generate-pdf').addEventListener('click', function() {

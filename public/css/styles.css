@@ -179,3 +179,13 @@ main.container {
 .btn-pdf:hover {
   background: #f8fafc;
 }
+
+/* Prep grid layout for Prepagado */
+.prep-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 900px) {
+  .prep-grid { grid-template-columns: 1fr; }
+}
