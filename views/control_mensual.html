@@ -14,8 +14,9 @@
       <a href="control_mensual.html" class="pill active">Control Mensual</a>
       <a href="evolucion_finanzas.html" class="pill">Evolución finanzas</a>
       <a href="prepagado.html" class="pill">Prepagado</a>
-    </nav>
-  </header>
+  </nav>
+  <button id="btn-generate-pdf" class="btn-pdf" title="Generar informe PDF" style="margin-left:8px;">Generar Informe PDF</button>
+</header>
   <main class="container">
     <h2>Mes (YYYY-MM)</h2>
 
@@ -107,5 +108,10 @@
       </table>
     </section>
   </main>
+<script>
+  document.getElementById('btn-generate-pdf').addEventListener('click', function() {
+    window.print();
+  });
+</script>
 </body>
 </html>

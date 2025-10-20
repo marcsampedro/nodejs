@@ -14,8 +14,9 @@
       <a href="control_mensual.html" class="pill">Control Mensual</a>
       <a href="evolucion_finanzas.html" class="pill active">Evolución finanzas</a>
       <a href="prepagado.html" class="pill">Prepagado</a>
-    </nav>
-  </header>
+  </nav>
+  <button id="btn-generate-pdf" class="btn-pdf" title="Generar informe PDF" style="margin-left:8px;">Generar Informe PDF</button>
+</header>
   <main class="container">
     <h2>Evolución Finanzas</h2>
 
@@ -33,30 +34,37 @@
   <!-- Inicialización de gráficos con datos simulados -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    const ctxSeries = document.getElementById('chart-series').getContext('2d');
-    const chartSeries = new Chart(ctxSeries, {
-      type: 'line',
-      data: {
-        labels: ['2025-04','2025-05','2025-06','2025-07','2025-08','2025-09'],
-        datasets: [
-          { label: 'Forecast', data: [100, 200, 150, 180, 220, 260], borderColor: 'rgba(54,162,235,1)', fill: false},
-          { label: 'Facturado', data: [90, 180, 160, 170, 210, 230], borderColor: 'rgba(255,99,132,1)', fill: false}
-        ]
-      },
-      options: { responsive: true, scales: { y: { beginAtZero: true } } }
-    });
-    const ctxBolsa = document.getElementById('chart-bolsa').getContext('2d');
-    const chartBolsa = new Chart(ctxBolsa, {
-      type: 'line',
-      data: {
-        labels: ['2025-04','2025-05','2025-06','2025-07','2025-08','2025-09'],
-        datasets: [
-          { label: 'Incremento', data: [40, 50, 60, 80, 60, 90], borderColor: 'rgba(75,192,192,1)', fill:false},
-          { label: 'Acumulado', data: [100, 120, 130, 180, 230, 260], borderColor: 'rgba(255,206,86,1)', fill:false}
-        ]
-      },
-      options: { responsive: true, scales: { y: { beginAtZero: true } } }
-    });
+    fetch('/data/finance-fixtures.json')
+      .then(res => res.json())
+      .then(data => {
+        const ctxSeries = document.getElementById('chart-series').getContext('2d');
+        const chartSeries = new Chart(ctxSeries, {
+          type: 'line',
+          data: {
+            labels: data.series.labels,
+            datasets: [
+              { label: 'Forecast', data: data.series.forecast, borderColor: 'rgba(54,162,235,1)', fill: false},
+              { label: 'Facturado', data: data.series.facturado, borderColor: 'rgba(255,99,132,1)', fill: false}
+            ]
+          },
+          options: { responsive: true, scales: { y: { beginAtZero: true } } }
+        });
+        const ctxBolsa = document.getElementById('chart-bolsa').getContext('2d');
+        const chartBolsa = new Chart(ctxBolsa, {
+          type: 'line',
+          data: {
+            labels: data.bolsa.labels,
+            datasets: [
+              { label: 'Incremento', data: data.bolsa.incremento, borderColor: 'rgba(75,192,192,1)', fill:false},
+              { label: 'Acumulado', data: data.bolsa.acumulado, borderColor: 'rgba(255,206,86,1)', fill:false}
+            ]
+          },
+          options: { responsive: true, scales: { y: { beginAtZero: true } } }
+        });
+      })
+      .catch(err => {
+        console.error('Error loading fixtures', err);
+      });
   </script>
 </body>
 </html>

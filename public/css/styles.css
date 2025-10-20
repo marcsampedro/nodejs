@@ -166,3 +166,16 @@ main.container {
 @media (max-width: 900px) {
   .charts-grid { grid-template-columns: 1fr; }
 }
+
+/* PDF button styling (generate reports) */
+.btn-pdf {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: #374151;
+  cursor: pointer;
+}
+.btn-pdf:hover {
+  background: #f8fafc;
+}

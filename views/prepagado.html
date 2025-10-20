@@ -14,8 +14,9 @@
             <a href="control_mensual.html">Control Mensual</a>
             <a href="evolucion_finanzas.html">Evolución finanzas</a>
             <a href="prepagado.html">Prepagado</a>
-        </nav>
-    </header>
+    </nav>
+  <button id="btn-generate-pdf" class="btn-pdf" title="Generar informe PDF" style="margin-left:8px;">Generar Informe PDF</button>
+</header>
     <main>
         <h2>Total General del Prepagado</h2>
         <p id="total-prepagado">11.236,81 €</p>
@@ -36,4 +37,9 @@
         <button>Añadir</button>
     </main>
 </body>
+<script>
+  document.getElementById('btn-generate-pdf').addEventListener('click', function() {
+    window.print();
+  });
+</script>
 </html>
